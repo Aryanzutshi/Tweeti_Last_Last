@@ -1,10 +1,19 @@
-import Author from "@/components/blog-author";
-import CtaSection from "@/components/sections/cta";
-import { getPost, getBlogPosts } from "@/lib/blog";
-import { siteConfig } from "@/lib/config";
-import { formatDate } from "@/lib/utils";
+// import Author from "@/components/blog-author";
+import Author from "../../../../components/blog-author"
+
+// import CtaSection from "@/components/sections/cta";
+import CtaSection from "../../../../components/sections/cta"
+
+// import { getPost, getBlogPosts } from "@/lib/blog";
+import { getPost, getBlogPosts } from  "../../../../lib/blog"
+
+// import { siteConfig } from "@/lib/config";
+import { siteConfig } from "../../../../lib/config"
+
+// import { formatDate } from "@/lib/utils";
+import { formatDate } from "../../../../lib/utils"
+
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -98,7 +107,7 @@ export default async function Blog({
         >
           {post.metadata.image && (
             <div className="mb-8">
-              <Image
+              <img
                 width={1920}
                 height={1080}
                 src={post.metadata.image}

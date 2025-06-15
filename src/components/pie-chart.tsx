@@ -2,13 +2,22 @@
 
 import { Pie, PieChart } from "recharts";
 
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+// import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "../components/ui/card"
+
+// import {
+//   ChartConfig,
+//   ChartContainer,
+//   ChartTooltip,
+//   ChartTooltipContent,
+// } from "@/components/ui/chart";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "../components/ui/chart";
+
 const chartData = [
   { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 110, fill: "var(--color-safari)" },

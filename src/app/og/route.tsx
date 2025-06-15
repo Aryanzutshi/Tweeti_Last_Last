@@ -1,5 +1,11 @@
-import { Icons } from "@/components/icons";
-import { siteConfig } from "@/lib/config";
+"use-client"
+
+// import { Icons } from "@/components/icons";
+import { Icons } from "../../components/icons"
+
+// import { siteConfig } from "@/lib/config";
+import { siteConfig } from "../../lib/config"
+
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 

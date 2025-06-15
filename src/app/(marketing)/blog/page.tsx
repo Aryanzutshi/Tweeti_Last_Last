@@ -1,7 +1,14 @@
-import BlogCard from "@/components/blog-card";
-import { getBlogPosts } from "@/lib/blog";
-import { siteConfig } from "@/lib/config";
-import { constructMetadata } from "@/lib/utils";
+// import BlogCard from "@/components/blog-card";
+import BlogCard from "../../../components/blog-card"
+
+// import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "../../../lib/blog"
+
+// import { siteConfig } from "@/lib/config";
+import { siteConfig } from "../../../lib/config"
+
+// import { constructMetadata } from "@/lib/utils";
+import { constructMetadata } from "../../../lib/utils"
 
 export const metadata = constructMetadata({
   title: "Blog",

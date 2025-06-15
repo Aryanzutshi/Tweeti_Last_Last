@@ -1,6 +1,8 @@
 "use client";
 
-import { BorderBeam } from "@/components/magicui/border-beam";
+// import { BorderBeam } from "@/components/magicui/border-beam";
+import { BorderBeam } from "../components/magicui/border-beam"
+
 import * as Accordion from "@radix-ui/react-accordion";
 import { motion, useInView } from "framer-motion";
 import React, {
@@ -11,7 +13,8 @@ import React, {
   useState,
 } from "react";
 
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils"
 
 type AccordionItemProps = {
   children: React.ReactNode;

@@ -1,5 +1,9 @@
-import { getBlogPosts } from "@/lib/blog";
-import { siteConfig } from "@/lib/config"; // assuming you have siteConfig.url
+// import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "../lib/blog"
+
+// import { siteConfig } from "@/lib/config";
+import { siteConfig } from "../lib/config"
+
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

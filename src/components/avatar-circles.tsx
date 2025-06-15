@@ -1,4 +1,6 @@
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils"
+
 import { HTMLAttributes } from "react";
 
 export interface AvatarCirclesProps extends HTMLAttributes<HTMLDivElement> {

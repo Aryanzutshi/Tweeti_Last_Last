@@ -1,4 +1,6 @@
-import { siteConfig } from "@/lib/config";
+// import { siteConfig } from "@/lib/config";
+import { siteConfig } from "../lib/config"
+
 import { type ClassValue, clsx } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";

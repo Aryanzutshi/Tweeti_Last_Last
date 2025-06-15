@@ -3,6 +3,16 @@
 import Link from "next/link";
 import * as React from "react";
 
+// import {
+//   NavigationMenu,
+//   NavigationMenuContent,
+//   NavigationMenuItem,
+//   NavigationMenuLink,
+//   NavigationMenuList,
+//   NavigationMenuTrigger,
+//   navigationMenuTriggerStyle,
+// } from "@/components/ui/navigation-menu";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,9 +21,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { siteConfig } from "@/lib/config";
-import { cn } from "@/lib/utils";
+} from "../components/ui/navigation-menu";
+
+// import { siteConfig } from "@/lib/config";
+import { siteConfig } from "../lib/config"
+
+// import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils"
 
 export default function NavigationMenuDemo() {
   return (
