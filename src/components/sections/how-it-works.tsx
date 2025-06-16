@@ -8,7 +8,7 @@ const data = [
     title: "1. Securely Connect in Seconds",
     content:
       "Your journey starts with peace of mind — Tweeti uses a fully serverless, secure-by-design architecture to protect your credentials. No data ever touches a centralized server.",
-    image: "/dashboard.png",
+    image: "/Tweeti_Feature-1.png",
     icon: <Upload className="w-6 h-6 text-primary" />,
   },
   {
@@ -16,7 +16,7 @@ const data = [
     title: "2. Link Your GitHub — Instantly",
     content:
       "Just one click to connect your GitHub. Choose your favorite repos or let Tweeti auto-discover your most active projects. You’re always in control.",
-    image: "/dashboard.png",
+    image: "/Tweeti_Feature-2.png",
     icon: <Zap className="w-6 h-6 text-primary" />,
   },
   {
@@ -24,7 +24,7 @@ const data = [
     title: "3. Watch the Magic Happen",
     content:
       "Tweeti auto-generates tweet-worthy content from your commits and PRs — personalized, polished, and ready to go. You build. We broadcast.",
-    image: "/dashboard.png",
+    image: "/X_Photo-Features.png",
     icon: <Sparkles className="w-6 h-6 text-primary" />,
   },
 ];
