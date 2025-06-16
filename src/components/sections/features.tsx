@@ -1,35 +1,35 @@
 import Features from "@/components/features-horizontal";
 import Section from "@/components/section";
-import { BarChart3, Brain, FileText, LineChart } from "lucide-react";
+import { Users, Sparkles, FileText, Rocket } from "lucide-react";
 
 const data = [
   {
     id: 1,
-    title: "AI-Powered Dashboard",
-    content: "Visualize trends and gain insights at a glance.",
+    title: "Auto-Generate Tweets from GitHub",
+    content: "Show off your grind. Instantly turn commits into engaging tweets that grow your dev brand — while you build.",
     image: "/dashboard.png",
-    icon: <BarChart3 className="h-6 w-6 text-primary" />,
+    icon: <Rocket className="h-6 w-6 text-primary" />,
   },
   {
     id: 2,
-    title: "Natural Language Processing",
-    content: "Analyze text and extract sentiment effortlessly.",
+    title: "One-Click GitHub Docs",
+    content: "Hate writing docs? We got you. Create clean, structured GitHub documentation in seconds — straight from your code.",
     image: "/dashboard.png",
-    icon: <Brain className="h-6 w-6 text-primary" />,
+    icon: <FileText className="h-6 w-6 text-primary" />,
   },
   {
     id: 3,
-    title: "Predictive Analytics",
-    content: "Forecast trends and make data-driven decisions.",
+    title: "Automated Tweet Threads with AI",
+    content: "Drop your changelog. Our LLMs turn it into fire tweet threads, launch posts, and community updates — hands-free.",
     image: "/dashboard.png",
-    icon: <LineChart className="h-6 w-6 text-primary" />,
+    icon: <Sparkles className="h-6 w-6 text-primary" />,
   },
   {
     id: 4,
-    title: "Automated Reporting",
-    content: "Generate comprehensive reports with one click.",
+    title: "Connect With Builders Instantly",
+    content: "Your work speaks. Discover and connect with like-minded devs, contributors, and collaborators across the chain.",
     image: "/dashboard.png",
-    icon: <FileText className="h-6 w-6 text-primary" />,
+    icon: <Users className="h-6 w-6 text-primary" />,
   },
 ];
 

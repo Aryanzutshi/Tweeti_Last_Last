@@ -1,7 +1,15 @@
-import { Icons } from "@/components/icons";
-import Section from "@/components/section";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+// import { Icons } from "@/components/icons";
+import { Icons } from  "../../components/icons"
+
+// import Section from "@/components/section";
+import Section from "../../components/section"
+
+// import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "../../components/ui/button"
+
+// import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils"
+
 import Link from "next/link";
 
 export default function CtaSection() {

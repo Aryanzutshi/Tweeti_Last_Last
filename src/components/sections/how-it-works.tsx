@@ -5,25 +5,25 @@ import { Sparkles, Upload, Zap } from "lucide-react";
 const data = [
   {
     id: 1,
-    title: "1. Upload Your Data",
+    title: "1. Securely Connect in Seconds",
     content:
-      "Simply upload your data to our secure platform. We support various file formats and data types to ensure a seamless integration with your existing systems.",
+      "Your journey starts with peace of mind — Tweeti uses a fully serverless, secure-by-design architecture to protect your credentials. No data ever touches a centralized server.",
     image: "/dashboard.png",
     icon: <Upload className="w-6 h-6 text-primary" />,
   },
   {
     id: 2,
-    title: "2. Click Start",
+    title: "2. Link Your GitHub — Instantly",
     content:
-      "Our advanced AI algorithms automatically process and analyze your data, extracting valuable insights and patterns that would be difficult to identify manually.",
+      "Just one click to connect your GitHub. Choose your favorite repos or let Tweeti auto-discover your most active projects. You’re always in control.",
     image: "/dashboard.png",
     icon: <Zap className="w-6 h-6 text-primary" />,
   },
   {
     id: 3,
-    title: "3. Get Actionable Insights",
+    title: "3. Watch the Magic Happen",
     content:
-      "Receive clear, actionable insights and recommendations based on the AI analysis. Use these insights to make data-driven decisions and improve your business strategies.",
+      "Tweeti auto-generates tweet-worthy content from your commits and PRs — personalized, polished, and ready to go. You build. We broadcast.",
     image: "/dashboard.png",
     icon: <Sparkles className="w-6 h-6 text-primary" />,
   },

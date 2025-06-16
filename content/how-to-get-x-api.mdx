@@ -3,5 +3,60 @@ title: How to Generate X API Tokens
 publishedAt: "2025-06-08"
 summary: Learn how to generate your X API Tokens.
 author: "Aryan Zutshi"
-image: "X-API-Blog.jpg"
+image: "/X-API-Blog.jpg"
 ---
+
+This guide will help you connect your Twitter (X) account to *Tweeti* so your GitHub commits can be automatically tweeted. To do this, you’ll need API credentials from the *X Developer Portal*.
+
+Follow the steps below to set up your *Developer Account*, generate the required keys, and configure permissions correctly.
+
+---
+
+## Step 1: Create a X Developer Account
+
+1. Go to: https://developer.twitter.com/en/portal/dashboard
+2. Click on *“Sign up For Free Account”* if you don’t already have one.
+
+    ![image.png](/X_Blog-1.png)
+
+---
+
+## Step 2: Get Your API Keys and Tokens
+
+1. *In dashboard click on Keys and Tokens*.
+
+    ![image.png](/X_Blog-2.png)
+
+2. Under *Consumer Keys, click *"Regenerate"** 
+    - You'll get API Key and API Secret
+
+*Save both keys safely – you’ll need them for Tweeti.*
+
+3. *Under Authentication Tokens,* click *"Generate"* 
+    - You'll get Access Token and Access Secret
+
+*Save both keys safely – you’ll need them for Tweeti.*
+
+![image.png](/X_Blog-3.png)
+
+---
+
+## Step 3: Set App Permissions Correctly
+
+1. Go to Settings 
+
+    ![image.png](/X_Blog-4.png)
+
+2. Under User Authentication Settings, click on "Set up" 
+3. Set App permissions to *Read and Write*
+4. Type of App to *Native App*
+5. Under App Info put “https://x.com/home” URL in callback and website URL (you can change this later) 
+6. Click Save
+
+![image.png](/X_Blog-5.png)
+
+![image.png](/X_Blog-6.png)
+
+---
+
+Now go back to Tweeti, enter your credentials, and watch your commits go live on Twitter automatically.
