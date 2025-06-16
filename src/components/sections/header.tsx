@@ -14,6 +14,10 @@ import { saveXCredentials } from "@/app/actions/saveXCredentials";
 export default function Header() {
   const [addBorder, setAddBorder] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState<"success" | "error" | null>(
+    null
+  );
   const [showXModal, setShowXModal] = useState(false);
   const [xCredentials, setXCredentials] = useState({
     apiKey: "",
@@ -106,6 +110,19 @@ export default function Header() {
         />
       </header>
 
+      {statusType && (
+        <div
+          className={cn(
+            "fixed top-5 left-1/2 transform -translate-x-1/2 px-4 py-3 rounded-md shadow-md transition-all duration-300 z-[9999]",
+            statusType === "success"
+              ? "bg-green-100 text-green-800 border border-green-300"
+              : "bg-red-100 text-red-800 border border-red-300"
+          )}
+        >
+          {statusMessage}
+        </div>
+      )}
+
       {/* Modal for X API Credentials */}
       {showXModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
@@ -167,20 +184,31 @@ export default function Header() {
                   !xCredentials.apiSecret ||
                   !xCredentials.accessToken ||
                   !xCredentials.accessSecret ||
-                  !xCredentials.clientSecret
+                  !xCredentials.clientSecret 
                 }
                 onClick={async () => {
-                  const result = await saveXCredentials(xCredentials);
-
-                  if (result.success) {
-                    console.log("Saved successfully");
-                    setShowXModal(false);
-                    // optionally show toast or confirmation
-                  } else {
-                    console.error("Failed to save credentials", result.error);
-                    // show user-friendly error if needed
+                  try {
+                    const result = await saveXCredentials(xCredentials);
+                
+                    if (result.success) {
+                      setStatusMessage("Credentials saved successfully! 🔐");
+                      setStatusType("success");
+                      setShowXModal(false);
+                    } else {
+                      throw new Error("Unknown server error");
+                    }
+                  } catch (error: any) {
+                    console.error("Save failed:", error);
+                    setStatusMessage("Failed to save credentials. Please try again later.");
+                    setStatusType("error");
+                  } finally {
+                    setTimeout(() => {
+                      setStatusMessage("");
+                      setStatusType(null);
+                    }, 4000); // Auto-dismiss after 4 seconds
                   }
                 }}
+                
                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Submit

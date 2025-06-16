@@ -61,7 +61,7 @@ export async function markdownToHTML(markdown: string) {
 }
 
 export async function getPost(slug: string) {
-  const filePath = path.join("content", `${slug}.mdx`);
+  const filePath = path.join(process.cwd(), "content", `${slug}.mdx`);
   const source = fs.readFileSync(filePath, "utf-8");
   const { content: rawContent, data: metadata } = parseFrontmatter(source);
   const content = await markdownToHTML(rawContent);
