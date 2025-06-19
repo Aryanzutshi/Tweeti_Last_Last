@@ -9,7 +9,7 @@ export async function connectWallet(): Promise<string | undefined> {
       ["ACCESS_ADDRESS", "SIGN_TRANSACTION", "ACCESS_TOKENS"],
       {
         name: "Tweeti",
-        logo: "https://arweave.net/jAvd7Z1CBd8gVF2D6ESj7SMCCUYxDX_z3vpp5aHdaYk",
+        logo: "/Tweeti_logo.png",
       },
       {
         host: "g8way.io",
