@@ -36,7 +36,7 @@ export const siteConfig = {
               "Use AI to generate and schedule posts, optimize engagement, and track campaign performance.",
           },
           {
-            href: "#",
+            href: "/github-documentation-maker",
             title: "GitHub Documentation Maker",
             description:
               "Auto-generate clean, structured, and consistent project documentation from code and comments.",

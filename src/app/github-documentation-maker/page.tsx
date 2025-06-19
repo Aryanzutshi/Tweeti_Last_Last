@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Octokit } from "octokit";
 import ProjectForm from "@/components/github-docs-form";
+import { toast } from "sonner";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 interface TreeNode {
   name: string;
@@ -20,14 +29,19 @@ export default function GithubPage() {
   const [selectedFiles, setSelectedFiles] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(false);
 
-  const accessToken = session?.accessToken;
+  const accessToken = (session as any)?.accessToken;
 
   useEffect(() => {
     if (accessToken) {
       const octokit = new Octokit({ auth: accessToken });
       octokit.rest.repos
-        .listForAuthenticatedUser({ per_page: 100 })
-        .then((res) => setRepos(res.data))
+        .listForAuthenticatedUser({ per_page: 100, sort: "updated" })
+        .then((res) => {
+          const sorted = res.data
+            .sort((a, b) => b.stargazers_count - a.stargazers_count)
+            .slice(0, 50);
+          setRepos(sorted);
+        })
         .catch((err) => console.error("Error fetching repos", err));
     }
   }, [accessToken]);
@@ -63,7 +77,7 @@ export default function GithubPage() {
       try {
         const res = await octokit.rest.repos.getContent({ owner, repo, path: dir });
         if (Array.isArray(res.data)) {
-          allFiles.push(...res.data);
+          allFiles.push(...res.data.filter(f => f.type === "file"));
         }
       } catch (err) {
         // folder doesn't exist, skip
@@ -117,7 +131,10 @@ export default function GithubPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center text-blue-400 mb-10">GitHub Docs Maker</h1>
+      <h1 className="text-4xl font-bold text-center text-blue-400 mb-2">GitHub Docs Maker</h1>
+      <p className="text-center text-zinc-400 mb-8 text-lg">
+        ✍️ Generate smart, structured documentation from your repo — in minutes.
+      </p>
 
       {!session ? (
         <div className="space-y-6 bg-zinc-900 p-6 rounded-lg border border-zinc-800">
@@ -132,7 +149,7 @@ export default function GithubPage() {
             onClick={() => signIn("github")}
             className="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
           >
-            Connect GitHub
+            🚀 Connect GitHub & Import Code
           </button>
 
           <hr className="my-6 border-zinc-700" />
@@ -157,24 +174,24 @@ export default function GithubPage() {
 
           <div>
             <h2 className="text-2xl font-semibold text-gray-100 mb-2">Choose a repository:</h2>
-            <select
-              onChange={(e) => {
-                const repo = e.target.value;
+            <Select
+              onValueChange={(repo) => {
                 setSelectedRepo(repo);
+                toast.success(`Repository "${repo}" selected. Pulling files...`);
                 fetchRelevantFiles(repo);
               }}
-              className="mt-2 p-3 border border-zinc-700 rounded-lg w-full shadow-sm bg-zinc-900 text-white focus:ring focus:border-blue-500"
-              defaultValue=""
             >
-              <option value="" disabled>
-                -- Select a repository --
-              </option>
-              {repos.map((repo) => (
-                <option key={repo.id} value={repo.full_name}>
-                  {repo.full_name}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger className="w-full bg-zinc-900 border-zinc-700 text-white overflow-y-scroll max-h-48">
+                <SelectValue placeholder="-- Select a repository --" />
+              </SelectTrigger>
+              <SelectContent className="bg-zinc-900 text-white max-h-64 overflow-y-auto">
+                {repos.map((repo) => (
+                  <SelectItem key={repo.id} value={repo.full_name} className="hover:bg-zinc-800">
+                    ⭐ {repo.stargazers_count} – {repo.full_name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {loading && <p className="text-blue-400 text-center">Fetching repository files...</p>}
@@ -182,6 +199,9 @@ export default function GithubPage() {
           {!loading && tree.length > 0 && (
             <div className="mt-4 bg-zinc-900 p-6 rounded border border-zinc-700">
               <h3 className="text-xl font-semibold text-gray-100 mb-4">File Tree:</h3>
+              <p className="text-sm text-zinc-400 mb-4">
+                ✅ Select files that describe the logic, APIs, and features. These will be used to generate documentation.
+              </p>
               {renderTree(tree)}
 
               <div className="mt-6">
@@ -191,6 +211,19 @@ export default function GithubPage() {
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
+
+                {selectedFiles.size > 0 && (
+                  <div className="mt-4">
+                    <button
+                      onClick={() => {
+                        alert(`Generating docs for ${selectedFiles.size} files...`);
+                      }}
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow"
+                    >
+                      🧠 Generate Documentation from Selected Files
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}

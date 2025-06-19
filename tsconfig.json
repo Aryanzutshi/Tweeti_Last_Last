@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/arutils.jsx", "src/lib/neonconn.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/arutils.jsx", "src/lib/neonconn.js", "types", "next-auth"],
   "exclude": ["node_modules"]
 }
