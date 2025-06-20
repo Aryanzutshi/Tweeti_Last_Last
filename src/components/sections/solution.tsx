@@ -11,8 +11,8 @@ const features = [
   {
     title: "Decentralized Storage with Arweave",
     description:
-      "Store data permanently and securely using Arweave’s decentralized protocol—eliminating reliance on centralized servers and reducing long-term data loss risks.",
-    className: "hover:bg-red-500/10 transition-all duration-500 ease-out",
+      "Store data permanently and securely using Arweave's decentralized protocol—eliminating reliance on centralized servers and reducing long-term data loss risks.",
+    className: "hover:bg-purple-500/10 transition-all duration-500 ease-out",
     content: (
       <>
         <Safari

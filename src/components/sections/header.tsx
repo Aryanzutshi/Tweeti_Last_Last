@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { connectWallet } from "@/lib/arutils";
 import { saveXCredentials } from "@/app/actions/saveXCredentials";
@@ -97,7 +98,13 @@ export default function Header() {
             title="brand-logo"
             className="relative mr-6 flex items-center space-x-2"
           >
-            <Icons.logo className="w-auto h-[40px]" />
+            <Image
+              src="/Tweeti_Logo.jpg"
+              alt="Tweeti Logo"
+              width={40}
+              height={40}
+              className="rounded-lg"
+            />
             <span className="font-bold text-xl">{siteConfig.name}</span>
           </Link>
 
@@ -208,7 +215,7 @@ export default function Header() {
             "fixed top-5 left-1/2 transform -translate-x-1/2 px-4 py-3 rounded-md shadow-md transition-all duration-300 z-[9999]",
             statusType === "success"
               ? "bg-green-100 text-green-800 border border-green-300"
-              : "bg-red-100 text-red-800 border border-red-300"
+              : "bg-purple-100 text-purple-800 border border-purple-300"
           )}
         >
           {statusMessage}

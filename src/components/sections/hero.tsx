@@ -22,9 +22,9 @@ function HeroPill() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center text-xs font-medium text-primary sm:text-sm">
-        📣 Announcement
-      </div>
+      {/* <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center text-xs font-medium text-primary sm:text-sm">
+        Announcement
+      </div> */}
       <p className="text-xs font-medium text-primary sm:text-sm">
         Introducing Tweeti
       </p>
@@ -98,7 +98,7 @@ export function HeroCTA() {
             "w-full sm:w-auto text-background flex gap-2"
           )}
         >
-          <Icons.logo className="h-6 w-6" />
+          {/* <Icons.logo className="h-6 w-6" /> */}
           Get started for free
         </Link>
       </div>
