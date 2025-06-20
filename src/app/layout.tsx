@@ -2,7 +2,7 @@
 import { Providers } from "@/components/providers";
 import { cn, constructMetadata } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
-import Script from "next/script"; 
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = constructMetadata({});
@@ -37,11 +37,11 @@ export default function RootLayout({
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}');
-            `,
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_MEASUREMENT_ID}', { debug_mode: true });
+    `,
           }}
         />
       </head>
