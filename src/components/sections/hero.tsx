@@ -7,7 +7,7 @@ import HeroVideoDialog from "@/components/magicui/hero-video";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { FloatingIconField } from "../floating-icons-field";
+// import { FloatingIconField } from "../floating-icons-field";
 import { SparklesText } from "../magicui/sparkles-text";
 import CtaSection from "@/components/sections/cta";
 
@@ -132,7 +132,7 @@ export default function Hero2() {
         <HeroPill />
         <HeroCTA />
         <HeroImage />
-        <FloatingIconField />
+        {/* <FloatingIconField /> */}
         <div className="pointer-events-none absolute inset-x-0 -bottom-12 h-1/3 bg-gradient-to-t from-background via-background to-transparent lg:h-1/4"></div>
       </div>
     </section>
