@@ -8,6 +8,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { FloatingIconField } from "../floating-icons-field";
+import { SparklesText } from "../magicui/sparkles-text";
+import CtaSection from "@/components/sections/cta";
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -43,7 +45,9 @@ function HeroPill() {
   );
 }
 
-function HeroTitles() {
+export function HeroCTA() {
+  const ease = [0.32, 0.72, 0, 1];
+
   return (
     <div className="flex w-full max-w-2xl flex-col space-y-4 overflow-hidden pt-8">
       <motion.h1
@@ -68,10 +72,11 @@ function HeroTitles() {
               ease,
             }}
           >
-            {text}
+            {index === 3 ? <SparklesText>{text}</SparklesText> : text}
           </motion.span>
         ))}
       </motion.h1>
+
       <motion.p
         className="mx-auto max-w-xl text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9 text-balance"
         initial={{ opacity: 0, y: 20 }}
@@ -84,19 +89,8 @@ function HeroTitles() {
       >
         No matter what problem you have, our AI can help you solve it.
       </motion.p>
-    </div>
-  );
-}
 
-function HeroCTA() {
-  return (
-    <>
-      <motion.div
-        className="mx-auto mt-6 flex w-full max-w-2xl flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.8, ease }}
-      >
+      <div className="flex flex-col w-full sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
         <Link
           href="https://github.com/apps/tweetii"
           className={cn(
@@ -107,16 +101,8 @@ function HeroCTA() {
           <Icons.logo className="h-6 w-6" />
           Get started for free
         </Link>
-      </motion.div>
-      <motion.p
-        className="mt-5 text-sm text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.0, duration: 0.8 }}
-      >
-        free trial. No Money required.
-      </motion.p>
-    </>
+      </div>
+    </div>
   );
 }
 
@@ -144,7 +130,6 @@ export default function Hero2() {
     <section id="hero">
       <div className="relative flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
         <HeroPill />
-        <HeroTitles />
         <HeroCTA />
         <HeroImage />
         <FloatingIconField />
