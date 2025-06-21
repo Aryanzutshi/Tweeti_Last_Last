@@ -22,72 +22,72 @@ export const siteConfig = {
     {
       trigger: "Features",
       content: {
-        main: {
-          icon: <Icons.logo className="h-6 w-6" />,
-          title: "AI-Powered Automation",
-          description: "Streamline your workflow with intelligent automation.",
-          href: "https://github.com/apps/tweetii",
-        },
+        // main: {
+        //   icon: <Icons.logo className="h-6 w-6" />,
+        //   title: "AI-Powered Automation",
+        //   description: "Streamline your workflow with intelligent automation.",
+        //   href: "https://github.com/apps/tweetii",
+        // },
         items: [
           {
-            href: "#",
-            title: "Automate Marketing",
+            href: "https://github.com/apps/tweetii",
+            title: "GitHub Commit to Tweet",
             description:
-              "Use AI to generate and schedule posts, optimize engagement, and track campaign performance.",
+              "Automatically tweet updates about your product",
           },
           {
-            href: "/github-documentation-maker",
-            title: "GitHub Documentation Maker",
+            href: "https://github.com/apps/readmepusher",
+            title: "GitHub Docify",
             description:
-              "Auto-generate clean, structured, and consistent project documentation from code and comments.",
+              "Keep your README updated",
           },
-          {
-            href: "#",
-            title: "ARProfiles",
-            description:
-              "Generate AI-refined developer profiles from GitHub contributions, commits, and project impact.",
-          },
+          // {
+          //   href: "#",
+          //   title: "ARProfiles",
+          //   description:
+          //     "Generate AI-refined developer profiles from GitHub contributions, commits, and project impact.",
+          // },
         ],
       },
     },
-    {
-      trigger: "Solutions",
-      content: {
-        items: [
-          {
-            title: "For Small Businesses",
-            href: "#",
-            description: "Tailored automation solutions for growing companies.",
-          },
-          {
-            title: "Enterprise",
-            href: "#",
-            description: "Scalable AI automation for large organizations.",
-          },
-          {
-            title: "Developers",
-            href: "#",
-            description: "API access and integration tools for developers.",
-          },
-          {
-            title: "Healthcare",
-            href: "#",
-            description: "Specialized automation for healthcare workflows.",
-          },
-          {
-            title: "Finance",
-            href: "#",
-            description: "AI-driven process automation for financial services.",
-          },
-          {
-            title: "Education",
-            href: "#",
-            description:
-              "Streamline administrative tasks in educational institutions.",
-          },
-        ],
-      },
-    },
+    // {
+    //   trigger: "Solutions",
+    //   content: {
+    //     items: [
+    //       {
+    //         title: "For Small Businesses",
+    //         href: "#",
+    //         description: "Tailored automation solutions for growing companies.",
+    //       },
+    //       {
+    //         title: "Enterprise",
+    //         href: "#",
+    //         description: "Scalable AI automation for large organizations.",
+    //       },
+    //       {
+    //         title: "Developers",
+    //         href: "#",
+    //         description: "API access and integration tools for developers.",
+    //       },
+    //       {
+    //         title: "Healthcare",
+    //         href: "#",
+    //         description: "Specialized automation for healthcare workflows.",
+    //       },
+    //       {
+    //         title: "Finance",
+    //         href: "#",
+    //         description: "AI-driven process automation for financial services.",
+    //       },
+    //       {
+    //         title: "Education",
+    //         href: "#",
+    //         description:
+    //           "Streamline administrative tasks in educational institutions.",
+    //       },
+    //     ],
+    //   },
+    // },
     {
       href: "/blog",
       label: "Blog",

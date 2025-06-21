@@ -9,13 +9,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { connectWallet } from "@/lib/arutils";
 import { saveXCredentials } from "@/app/actions/saveXCredentials";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@/components/ui/popover";
 import {
   Card,
   CardHeader,
@@ -25,18 +19,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export default function Header() {
   const [addBorder, setAddBorder] = useState(false);
-  const [walletAddress, setWalletAddress] = useState<string | null>(null);
-  const [walletInfo, setWalletInfo] = useState<{
-    balance: string;
-    config: {
-      gateway: string;
-      appName: string;
-    };
-  } | null>(null);
   const [statusMessage, setStatusMessage] = useState("");
   const [statusType, setStatusType] = useState<"success" | "error" | null>(null);
   const [showXModal, setShowXModal] = useState(false);
@@ -56,57 +41,36 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleConnectWallet = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleConnectX = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    try {
-      const address = await connectWallet();
-      if (!address) throw new Error("No address returned");
-
-      setWalletAddress(address);
-      setShowXModal(true);
-
-      const res = await fetch(`https://arweave.net/wallet/${address}/balance`);
-      const balanceWinston = await res.text();
-      const balanceAR = (+balanceWinston / 1e12).toFixed(4);
-
-      setWalletInfo({
-        balance: balanceAR,
-        config: {
-          gateway: "https://g8way.io",
-          appName: "Tweeti",
-        },
-      });
-    } catch (err) {
-      console.error("Wallet connection failed", err);
-      setStatusMessage("Wallet connection failed.");
-      setStatusType("error");
-    }
-  };
-
-  const handleDisconnectWallet = () => {
-    setWalletAddress(null);
-    setWalletInfo(null);
-    setShowXModal(false);
+    setShowXModal(true);
   };
 
   return (
     <>
-      <header className="sticky top-0 z-50 py-2 bg-background/60 backdrop-blur">
-        <div className="flex justify-between items-center container">
-          <Link
-            href="/"
-            title="brand-logo"
-            className="relative mr-6 flex items-center space-x-2"
-          >
-            <Image
-              src="/Tweeti_Logo.jpg"
-              alt="Tweeti Logo"
-              width={40}
-              height={40}
-              className="rounded-lg"
-            />
-            <span className="font-bold text-xl">{siteConfig.name}</span>
-          </Link>
+      <header
+        className={cn(
+          "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+          addBorder && "border-border/40"
+        )}
+      >
+        <div className="container flex h-16 items-center justify-between">
+          <div className="mr-4 hidden md:flex">
+            <Link
+              href="/"
+              title="brand-logo"
+              className="relative mr-6 flex items-center space-x-2"
+            >
+              <Image
+                src="/Tweeti_Logo.jpg"
+                alt="Tweeti Logo"
+                width={40}
+                height={40}
+                className="rounded-lg"
+              />
+              <span className="font-bold text-xl">{siteConfig.name}</span>
+            </Link>
+          </div>
 
           <div className="hidden lg:block">
             <div className="flex items-center">
@@ -115,51 +79,13 @@ export default function Header() {
               </nav>
 
               <div className="gap-2 flex items-center">
-                {!walletAddress ? (
-                  <Link
-                    href=""
-                    onClick={handleConnectWallet}
-                    className={buttonVariants({ variant: "outline" })}
-                  >
-                    Connect Wallet
-                  </Link>
-                ) : (
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <button
-                        className={cn(
-                          "text-sm font-mono truncate max-w-[150px] px-3 py-2 border rounded-md",
-                          "bg-muted hover:bg-muted/80"
-                        )}
-                      >
-                        {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
-                      </button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-72">
-                      <h3 className="font-semibold text-lg mb-3">Wallet Summary</h3>
-                      <div className="space-y-2 text-sm">
-                        <div>
-                          <span className="font-medium">Balance:</span> {walletInfo?.balance} AR
-                        </div>
-                        <div>
-                          <span className="font-medium">Connected via:</span>
-                          <div className="text-xs text-muted-foreground">
-                            {walletInfo?.config.gateway}
-                          </div>
-                        </div>
-                        <div>
-                          <span className="font-medium">App:</span> {walletInfo?.config.appName}
-                        </div>
-                      </div>
-                      <button
-                        onClick={handleDisconnectWallet}
-                        className={cn("mt-4 w-full", buttonVariants({ variant: "destructive" }))}
-                      >
-                        Disconnect
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                )}
+                <Link
+                  href=""
+                  onClick={handleConnectX}
+                  className={buttonVariants({ variant: "outline" })}
+                >
+                  Connect X API
+                </Link>
               </div>
             </div>
           </div>
@@ -176,38 +102,6 @@ export default function Header() {
           )}
         />
       </header>
-
-      {walletAddress && walletInfo && (
-        <Card className="container mt-4 bg-gradient-to-br from-muted/50 to-background border border-muted p-4 shadow-md">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div className="text-xl font-semibold flex items-center gap-2">
-                Connected Wallet <Badge variant="outline">Arweave</Badge>
-              </div>
-              <Button variant="destructive" onClick={handleDisconnectWallet}>
-                Disconnect
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent className="grid gap-2 text-sm">
-            <div>
-              <span className="font-medium text-muted-foreground">Address:</span> <span className="font-mono">{walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}</span>
-            </div>
-            <div>
-              <span className="font-medium text-muted-foreground">Balance:</span> {walletInfo.balance} AR
-            </div>
-            <div>
-              <span className="font-medium text-muted-foreground">Gateway:</span> {walletInfo.config.gateway}
-            </div>
-            <div>
-              <span className="font-medium text-muted-foreground">App:</span> {walletInfo.config.appName}
-            </div>
-          </CardContent>
-          <CardFooter className="text-xs text-muted-foreground italic">
-            Securely connected via ArConnect.
-          </CardFooter>
-        </Card>
-      )}
 
       {statusType && (
         <div
