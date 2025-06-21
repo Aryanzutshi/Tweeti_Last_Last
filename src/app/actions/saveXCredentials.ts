@@ -12,12 +12,12 @@ export async function saveXCredentials(credentials: {
   apiSecret: string;
   accessToken: string;
   accessSecret: string;
-  clientSecret: string;
+  githubUsername: string;
 }) {
   try {
     await sql`
-      INSERT INTO x_credentials (api_key, api_secret, access_token, access_secret, client_secret)
-      VALUES (${credentials.apiKey}, ${credentials.apiSecret}, ${credentials.accessToken}, ${credentials.accessSecret}, ${credentials.clientSecret});
+      INSERT INTO x_credentials (api_key, api_secret, access_token, access_secret, github_username)
+      VALUES (${credentials.apiKey}, ${credentials.apiSecret}, ${credentials.accessToken}, ${credentials.accessSecret}, ${credentials.githubUsername});
     `;
     return { success: true };
   } catch (error) {

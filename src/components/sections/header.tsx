@@ -30,7 +30,7 @@ export default function Header() {
     apiSecret: "",
     accessToken: "",
     accessSecret: "",
-    clientSecret: "",
+    githubUsername: "",
   });
 
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function Header() {
                 { label: "API Secret", key: "apiSecret" },
                 { label: "Access Token", key: "accessToken" },
                 { label: "Access Secret", key: "accessSecret" },
-                { label: "Client Secret", key: "clientSecret" },
+                { label: "GitHub Username", key: "githubUsername" },
               ].map(({ label, key }) => (
                 <div key={key}>
                   <label className="block text-sm font-medium text-muted-foreground mb-1">
@@ -172,7 +172,7 @@ export default function Header() {
                   !xCredentials.apiSecret ||
                   !xCredentials.accessToken ||
                   !xCredentials.accessSecret ||
-                  !xCredentials.clientSecret
+                  !xCredentials.githubUsername
                 }
                 onClick={async () => {
                   try {
