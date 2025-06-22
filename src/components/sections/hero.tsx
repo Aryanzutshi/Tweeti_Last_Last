@@ -7,7 +7,7 @@ import HeroVideoDialog from "@/components/magicui/hero-video";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { FloatingIconField } from "../floating-icons-field";
+// import { FloatingIconField } from "../floating-icons-field";
 import { SparklesText } from "../magicui/sparkles-text";
 import CtaSection from "@/components/sections/cta";
 
@@ -22,9 +22,9 @@ function HeroPill() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center text-xs font-medium text-primary sm:text-sm">
-        📣 Announcement
-      </div>
+      {/* <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center text-xs font-medium text-primary sm:text-sm">
+        Announcement
+      </div> */}
       <p className="text-xs font-medium text-primary sm:text-sm">
         Introducing Tweeti
       </p>
@@ -49,7 +49,7 @@ export function HeroCTA() {
   const ease = [0.32, 0.72, 0, 1];
 
   return (
-    <div className="flex w-full max-w-2xl flex-col space-y-4 overflow-hidden pt-8">
+    <div className="flex w-full max-w-4xl flex-col space-y-4 overflow-hidden pt-8">
       <motion.h1
         className="text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl"
         initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
@@ -90,18 +90,77 @@ export function HeroCTA() {
         No matter what problem you have, our AI can help you solve it.
       </motion.p>
 
-      <div className="flex flex-col w-full sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
-        <Link
-          href="https://github.com/apps/tweetii"
-          className={cn(
-            buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-background flex gap-2"
-          )}
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto pt-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.8,
+          duration: 0.8,
+          ease,
+        }}
+      >
+        {/* First Feature - Requires X Credentials */}
+        <motion.div
+          className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-purple-50/50 to-purple-100/30 dark:from-purple-950/50 dark:to-purple-900/30 p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+          whileHover={{ y: -5 }}
         >
-          <Icons.logo className="h-6 w-6" />
-          Get started for free
-        </Link>
-      </div>
+          <div className="flex items-start justify-between mb-4">
+            <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+            </div>
+            <div className="text-xs bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-full font-medium">
+              Requires X Credentials
+            </div>
+          </div>
+          <h3 className="text-xl font-semibold text-foreground mb-2">GitHub Commit to Tweet</h3>
+          <p className="text-muted-foreground mb-4">Automatically tweet updates about your product</p>
+          <Link
+            href="https://github.com/apps/tweetii"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "w-full border-purple-200 dark:border-purple-700 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950"
+            )}
+          >
+            Get Started Now
+          </Link>
+        </motion.div>
+
+        {/* Second Feature - Direct Access */}
+        <motion.div
+          className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-purple-50/50 to-purple-100/30 dark:from-purple-950/50 dark:to-purple-900/30 p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+          whileHover={{ y: -5 }}
+        >
+          <div className="flex items-start justify-between mb-4">
+            <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="text-xs bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-full font-medium">
+              Configure with github
+            </div>
+          </div>
+          <h3 className="text-xl font-semibold text-foreground mb-2">GitHub Docify</h3>
+          <p className="text-muted-foreground mb-4">Keep your README updated</p>
+          <Link
+            href="https://github.com/apps/readmepusher"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "w-full border-purple-200 dark:border-purple-700 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950"
+            )}
+          >
+            Get Started Now
+          </Link>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
@@ -132,7 +191,7 @@ export default function Hero2() {
         <HeroPill />
         <HeroCTA />
         <HeroImage />
-        <FloatingIconField />
+        {/* <FloatingIconField /> */}
         <div className="pointer-events-none absolute inset-x-0 -bottom-12 h-1/3 bg-gradient-to-t from-background via-background to-transparent lg:h-1/4"></div>
       </div>
     </section>

@@ -24,7 +24,7 @@ export function FloatingIconField() {
   const icons = Array.from({ length: iconCount }).map((_, i) => {
     const IconComponent = iconSet[i % iconSet.length];
 
-    const size = generateRandomFloat(20, 40); // px
+    const size = generateRandomFloat(15, 30); // px
     const top = generateRandomFloat(0, 90); // vh
     const left = generateRandomFloat(0, 90); // vw
     const duration = generateRandomFloat(6, 15);
@@ -34,12 +34,13 @@ export function FloatingIconField() {
     return (
       <motion.div
         key={i}
-        className="pointer-events-none fixed z-0 opacity-30 transition-colors"
+        className="pointer-events-none fixed z-0 transition-colors"
         style={{
           top: `${top}vh`,
           left: `${left}vw`,
           width: `${size}px`,
           height: `${size}px`,
+          opacity: 0.15,
         }}
         animate={{
           x: [0, 10 * direction, -10 * direction, 0],

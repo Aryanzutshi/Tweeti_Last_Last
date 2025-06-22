@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
+import { useRouter } from "next/navigation";
 
 // import {
 //   NavigationMenu,
@@ -30,6 +31,12 @@ import { siteConfig } from "../lib/config"
 import { cn } from "../lib/utils"
 
 export default function NavigationMenuDemo() {
+  const router = useRouter();
+
+  const handleFeaturesClick = () => {
+    router.push('/');
+  };
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -37,13 +44,15 @@ export default function NavigationMenuDemo() {
           <NavigationMenuItem key={index}>
             {item.trigger ? (
               <>
-                <NavigationMenuTrigger>{item.trigger}</NavigationMenuTrigger>
+                <NavigationMenuTrigger onClick={handleFeaturesClick}>
+                  {item.trigger}
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul
+                  {/* <ul
                     className={`grid gap-3 p-6 ${
                       item.content.main
                         ? "md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]"
-                        : "w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]"
+                        : "w-[300px] md:w-[350px] grid-cols-1"
                     }`}
                   >
                     {item.content.main && (
@@ -63,7 +72,8 @@ export default function NavigationMenuDemo() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                    )}
+                    )} */}
+                    <ul className="w-[300px] md:w-[350px] grid grid-cols-1 gap-3 p-6">
                     {item.content.items.map((subItem, subIndex) => (
                       <ListItem
                         key={subIndex}
@@ -109,6 +119,8 @@ const ListItem = React.forwardRef<
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
+          target="_blank"
+          rel="noopener noreferrer"
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>

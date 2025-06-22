@@ -166,7 +166,7 @@ export default function GithubPage() {
             </p>
             <button
               onClick={() => signOut()}
-              className="text-sm text-red-400 underline"
+              className="text-sm text-purple-400 underline"
             >
               Sign out
             </button>
