@@ -45,6 +45,7 @@
     "sonner": "^2.0.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
+    "twitter-api-v2": "^1.23.2",
     "unified": "^11.0.5",
     "vaul": "^0.9.1"
   },

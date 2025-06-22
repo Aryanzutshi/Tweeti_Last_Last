@@ -116,6 +116,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.7)
+      twitter-api-v2:
+        specifier: ^1.23.2
+        version: 1.23.2
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -3242,6 +3245,9 @@ packages:
 
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
+
+  twitter-api-v2@1.23.2:
+    resolution: {integrity: sha512-m0CGXmfGwUhWBOOTVCIXIoSEXwGCQV3Es9yraCwUxaVrjJT2CQcqDrQsQTpBhtiAvVL2HS1cCEGsotNjfX9log==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -7032,6 +7038,8 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.6.3: {}
+
+  twitter-api-v2@1.23.2: {}
 
   type-check@0.4.0:
     dependencies:
