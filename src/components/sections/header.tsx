@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import Drawer from "@/components/drawer";
 import { Icons } from "@/components/icons";
 import Menu from "@/components/menu";
@@ -10,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { saveXCredentials } from "@/app/actions/saveXCredentials";
+import TwitterConnect from "@/app/actions/XCredentials";
 import {
   Card,
   CardHeader,
@@ -26,11 +28,9 @@ export default function Header() {
   const [statusType, setStatusType] = useState<"success" | "error" | null>(null);
   const [showXModal, setShowXModal] = useState(false);
   const [xCredentials, setXCredentials] = useState({
-    apiKey: "",
-    apiSecret: "",
-    accessToken: "",
-    accessSecret: "",
     githubUsername: "",
+    access_token: "",
+    access_secret: "",
   });
 
   useEffect(() => {
@@ -45,6 +45,14 @@ export default function Header() {
     e.preventDefault();
     setShowXModal(true);
   };
+
+  
+  const getXCredentials = async () => {
+    console.log("Fetching X credentials...");
+    const x_url = `https://xauth.onrender.com/auth/twitter`
+    const resutl = await axios.get(x_url)
+    console.log(resutl.data)
+  }
 
   return (
     <>
@@ -127,10 +135,6 @@ export default function Header() {
             </CardHeader>
             <CardContent className="space-y-4">
               {[
-                { label: "API Key", key: "apiKey" },
-                { label: "API Secret", key: "apiSecret" },
-                { label: "Access Token", key: "accessToken" },
-                { label: "Access Secret", key: "accessSecret" },
                 { label: "GitHub Username", key: "githubUsername" },
               ].map(({ label, key }) => (
                 <div key={key}>
@@ -166,37 +170,11 @@ export default function Header() {
                 Cancel
               </Button>
               <Button
-                className="w-full"
-                disabled={
-                  !xCredentials.apiKey ||
-                  !xCredentials.apiSecret ||
-                  !xCredentials.accessToken ||
-                  !xCredentials.accessSecret ||
-                  !xCredentials.githubUsername
-                }
-                onClick={async () => {
-                  try {
-                    const result = await saveXCredentials(xCredentials);
-                    if (result.success) {
-                      setStatusMessage("Credentials saved successfully! 🔐");
-                      setStatusType("success");
-                      setShowXModal(false);
-                    } else {
-                      throw new Error("Unknown server error");
-                    }
-                  } catch (error: any) {
-                    console.error("Save failed:", error);
-                    setStatusMessage("Failed to save credentials. Please try again later.");
-                    setStatusType("error");
-                  } finally {
-                    setTimeout(() => {
-                      setStatusMessage("");
-                      setStatusType(null);
-                    }, 4000);
-                  }
-                }}
+                className="w-full text-white-900 bg-blue-600 hover:bg-blue-700"
+                disabled={!xCredentials.githubUsername}
+                onClick={getXCredentials}
               >
-                Save & Connect
+                Connect to X
               </Button>
             </CardFooter>
           </Card>
