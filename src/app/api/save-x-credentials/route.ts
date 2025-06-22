@@ -1,17 +1,22 @@
-// app/api/save-x-credentials/route.ts
-import { saveXCredentials } from "@/app/actions/saveXCredentials";
-import { NextResponse } from "next/server";
+// app/api/save-x-credentials/route.ts (if using App Router)
 
-export async function POST(req: Request) {
+import { NextRequest, NextResponse } from 'next/server';
+import { saveXCredentials } from '@/app/actions/saveXCredentials';
+
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { githubUsername, access_token, access_secret } = body;
 
-    const result = await saveXCredentials({ githubUsername, access_token, access_secret });
+    if (!githubUsername || !access_token || !access_secret) {
+      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
+    }
 
-    return NextResponse.json(result);
+    await saveXCredentials({ githubUsername, access_token, access_secret });
+
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("API save error:", error);
-    return NextResponse.json({ success: false, error: "Server error" }, { status: 500 });
+    console.error('❌ API error saving credentials:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

@@ -45,43 +45,63 @@ export default function Header() {
     setShowXModal(true);
   };
 
-  const getXCredentials = async () => {
+  const getXCredentials = async (githubUsername: string) => {
     try {
       const popup = window.open(
         `http://xauth.onrender.com/auth/twitter`,
         "_blank",
         "width=500,height=600"
       );
-
+  
       if (!popup) {
         setStatusType("error");
         setStatusMessage("Popup blocked. Please allow popups and try again.");
         return;
       }
-
-      const messageListener = (event: MessageEvent) => {
-        // Accept messages from any origin (you can restrict later)
-        if (event.data && event.data.access_token && event.data.access_secret) {
+  
+      const messageListener = async (event: MessageEvent) => {
+        if (event.data?.access_token && event.data?.access_secret) {
           const tokenData = {
             access_token: event.data.access_token,
             access_secret: event.data.access_secret,
           };
-
+  
           setXCredentials((prev) => ({
             ...prev,
             ...tokenData,
           }));
-
+  
           console.log("✅ Token data received from popup:", tokenData);
-
-          setStatusType("success");
-          setStatusMessage("✅ Token received from X (Twitter)");
-
+  
+          try {
+            const res = await fetch('/api/save-x-credentials', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                githubUsername,
+                ...tokenData,
+              }),
+            });
+  
+            if (!res.ok) {
+              throw new Error('Failed to save credentials');
+            }
+  
+            setStatusType("success");
+            setStatusMessage("✅ Token received and saved successfully");
+          } catch (saveError) {
+            console.error("❌ Failed to save credentials:", saveError);
+            setStatusType("error");
+            setStatusMessage("❌ Token received but failed to save");
+          }
+  
           window.removeEventListener("message", messageListener);
           popup.close();
         }
       };
-
+  
       window.addEventListener("message", messageListener);
     } catch (error) {
       console.error("Error during X OAuth flow:", error);
@@ -89,6 +109,7 @@ export default function Header() {
       setStatusMessage("❌ Failed to connect to X. Try again.");
     }
   };
+  
 
   return (
     <>
@@ -208,7 +229,7 @@ export default function Header() {
               <Button
                 className="w-full text-white-900 bg-blue-600 hover:bg-blue-700"
                 disabled={!xCredentials.githubUsername}
-                onClick={getXCredentials}
+                onClick={() => getXCredentials(xCredentials.githubUsername)}
               >
                 Connect to X
               </Button>
