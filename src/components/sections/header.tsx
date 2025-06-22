@@ -11,7 +11,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { saveXCredentials } from "@/app/actions/saveXCredentials";
-import TwitterConnect from "@/app/actions/XCredentials";
 import {
   Card,
   CardHeader,
@@ -46,13 +45,50 @@ export default function Header() {
     setShowXModal(true);
   };
 
-  
   const getXCredentials = async () => {
-    console.log("Fetching X credentials...");
-    const x_url = `https://xauth.onrender.com/auth/twitter`
-    const resutl = await axios.get(x_url)
-    console.log(resutl.data)
-  }
+    try {
+      const popup = window.open(
+        `http://xauth.onrender.com/auth/twitter`,
+        "_blank",
+        "width=500,height=600"
+      );
+
+      if (!popup) {
+        setStatusType("error");
+        setStatusMessage("Popup blocked. Please allow popups and try again.");
+        return;
+      }
+
+      const messageListener = (event: MessageEvent) => {
+        // Accept messages from any origin (you can restrict later)
+        if (event.data && event.data.access_token && event.data.access_secret) {
+          const tokenData = {
+            access_token: event.data.access_token,
+            access_secret: event.data.access_secret,
+          };
+
+          setXCredentials((prev) => ({
+            ...prev,
+            ...tokenData,
+          }));
+
+          console.log("✅ Token data received from popup:", tokenData);
+
+          setStatusType("success");
+          setStatusMessage("✅ Token received from X (Twitter)");
+
+          window.removeEventListener("message", messageListener);
+          popup.close();
+        }
+      };
+
+      window.addEventListener("message", messageListener);
+    } catch (error) {
+      console.error("Error during X OAuth flow:", error);
+      setStatusType("error");
+      setStatusMessage("❌ Failed to connect to X. Try again.");
+    }
+  };
 
   return (
     <>
@@ -154,7 +190,7 @@ export default function Header() {
                 </div>
               ))}
               <div className="pt-2 text-sm text-muted-foreground">
-                Need help? {" "}
+                Need help?{" "}
                 <a
                   href="https://quilled-shade-493.notion.site/Tweeti-Doc-20f961b7fc938065b603e4059fff29c6?source=copy_link"
                   target="_blank"
