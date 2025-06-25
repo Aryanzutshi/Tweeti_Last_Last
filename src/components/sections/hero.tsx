@@ -60,7 +60,7 @@ export function HeroCTA() {
           staggerChildren: 0.2,
         }}
       >
-        {["Automate", "your", "workflow", "with AI"].map((text, index) => (
+        {["Automate", "your", "workflow", "with Tweeti"].map((text, index) => (
           <motion.span
             key={index}
             className="inline-block px-1 md:px-2 text-balance font-semibold"
@@ -87,7 +87,7 @@ export function HeroCTA() {
           ease,
         }}
       >
-        No matter what problem you have, our AI can help you solve it.
+        You ship code. We ships story.
       </motion.p>
 
       <motion.div 
