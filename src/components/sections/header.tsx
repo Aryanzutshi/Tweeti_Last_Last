@@ -271,12 +271,12 @@ export default function Header() {
               <div className="pt-2 text-sm text-muted-foreground">
                 Need help?{" "}
                 <a
-                  href="https://quilled-shade-493.notion.site/Tweeti-Doc-20f961b7fc938065b603e4059fff29c6?source=copy_link"
+                  href="https://tweeti.vercel.app/blog/how-we-manage-data"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-medium"
                 >
-                  Learn how to get your X credentials →
+                  Learn how we manage your data →
                 </a>
               </div>
             </CardContent>
