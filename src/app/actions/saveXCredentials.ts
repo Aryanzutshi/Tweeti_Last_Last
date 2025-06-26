@@ -6,15 +6,21 @@ import { neon } from '@neondatabase/serverless';
 const sql = neon(process.env.DATABASE_URL!);
 
 export async function saveXCredentials({
+  github_username,
   access_token,
   access_secret,
 }: {
+  github_username: string;
   access_token: string;
   access_secret: string;
 }) {
   await sql`
-    INSERT INTO x_credentials (access_token, access_secret)
-    VALUES (${access_token}, ${access_secret});
+    UPDATE x_credentials
+    SET
+      access_token = ${access_token},
+      access_secret = ${access_secret},
+      created_at = NOW()
+    WHERE github_username = ${github_username};
   `;
   return { success: true };
 }
