@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
-import { saveGithubUsername } from "@/app/actions/saveGithubCredentials";
+import { saveGithubCredentials } from "@/app/actions/saveGithubCredentials";
 
 interface GitHubProfile {
   login: string;
@@ -20,8 +20,15 @@ const handler = NextAuth({
     async signIn({ account, profile }) {
       if (account?.provider === "github") {
         const githubUsername = (profile as GitHubProfile)?.login;
-        if (githubUsername) {
-          await saveGithubUsername({ github_username: githubUsername });
+        const accessToken = account.access_token;
+        const accessSecret = ""; // GitHub doesn't provide a secret, but X (Twitter) might later
+
+        if (githubUsername && accessToken) {
+          await saveGithubCredentials({
+            github_username: githubUsername,
+            access_token: accessToken,
+            access_secret: accessSecret, // Can remain "" or NULL for now
+          });
         }
       }
       return true;
