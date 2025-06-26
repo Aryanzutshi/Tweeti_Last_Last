@@ -13,7 +13,6 @@ export async function saveGithubUsername({
   await sql`
     INSERT INTO x_credentials (github_username)
     VALUES (${github_username})
-    ON CONFLICT (github_username) DO NOTHING;
   `;
   return { success: true };
 }

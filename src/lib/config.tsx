@@ -1,5 +1,5 @@
 // import { Icons } from "@/components/icons";
-import { Icons } from "../components/icons"
+import { Icons } from "../components/icons";
 
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
@@ -32,14 +32,12 @@ export const siteConfig = {
           {
             href: "https://github.com/apps/tweetii",
             title: "GitHub Commit to Tweet",
-            description:
-              "Automatically tweet updates about your product",
+            description: "Automatically tweet updates about your product",
           },
           {
             href: "https://github.com/apps/readmepusher",
             title: "GitHub Docify",
-            description:
-              "Keep your README updated",
+            description: "Keep your README updated",
           },
           // {
           //   href: "#",
@@ -101,29 +99,30 @@ export const siteConfig = {
       yearlyPrice: "Free",
       features: [
         "1 User",
-        "5GB Storage",
-        "Basic Support",
-        "Limited API Access",
-        "Standard Analytics",
+        "Up to 1 GitHub Repo",
+        "5 Commits → Tweets / month",
+        "Limited Git-Docify (3 summaries)",
+        "Community Support",
       ],
-      description: "Perfect for individuals and small projects",
-      buttonText: "Subscribe",
+      description: "Try out the platform with core features",
+      buttonText: "Get Started",
       isPopular: false,
     },
     {
       name: "PRO",
       href: "#",
-      price: "$49",
+      price: "$19",
       period: "month",
-      yearlyPrice: "$40",
+      yearlyPrice: "$15",
       features: [
-        "5 Users",
-        "50GB Storage",
+        "Up to 5 Users",
+        "Unlimited GitHub Repos",
+        "100 Commits → Tweets / month",
+        "Full Git-Docify access",
         "Priority Support",
-        "Full API Access",
-        "Advanced Analytics",
+        "Webhook Integration",
       ],
-      description: "Ideal for growing businesses and teams",
+      description: "For developers and indie teams",
       buttonText: "Subscribe",
       isPopular: true,
     },
@@ -135,13 +134,14 @@ export const siteConfig = {
       yearlyPrice: "$82",
       features: [
         "Unlimited Users",
-        "500GB Storage",
+        "Unlimited Commits / Repos",
+        "Git-Docify + AI Assistants",
+        "Custom Domains & Branding",
+        "Audit Logs & Analytics",
         "24/7 Premium Support",
-        "Custom Integrations",
-        "AI-Powered Insights",
       ],
-      description: "For large-scale operations and high-volume users",
-      buttonText: "Subscribe",
+      description: "Scalable tooling for large teams & orgs",
+      buttonText: "Contact Sales",
       isPopular: false,
     },
   ],
@@ -150,9 +150,9 @@ export const siteConfig = {
       question: "What is Tweeti?",
       answer: (
         <span>
-          Tweeti is an AI Powered Marketing tool that uses AI
-          to manage your online presence using code. All you
-          need is code and an X account and we got you!!
+          Tweeti is an AI Powered Marketing tool that uses AI to manage your
+          online presence using code. All you need is code and an X account and
+          we got you!!
         </span>
       ),
     },
@@ -161,7 +161,7 @@ export const siteConfig = {
       answer: (
         <span>
           You can get started with Tweeti by signing up for an account on our
-          website, filling in some credentials. We also offer tutorials and 
+          website, filling in some credentials. We also offer tutorials and
           documentation to help you along the way.
         </span>
       ),
@@ -170,9 +170,9 @@ export const siteConfig = {
       question: "What types of AI models does Tweeti support?",
       answer: (
         <span>
-          Tweeti will support a wide range of AI models, including but not limited
-          to OpenAI&apos;s models, deepseek models. Currently, due to costing, we only have 
-          support for Gemini&apos;s models.
+          Tweeti will support a wide range of AI models, including but not
+          limited to OpenAI&apos;s models, deepseek models. Currently, due to
+          costing, we only have support for Gemini&apos;s models.
         </span>
       ),
     },
