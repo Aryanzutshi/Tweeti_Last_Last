@@ -3,9 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function TwitterConnect(credentials: {
-    githubUsername: string;
-  }) {
+export default function TwitterConnect() {
   const router = useRouter();
 
   useEffect(() => {

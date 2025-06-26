@@ -6,13 +6,13 @@ import { saveXCredentials } from '@/app/actions/saveXCredentials';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { githubUsername, access_token, access_secret } = body;
+    const { access_token, access_secret } = body;
 
-    if (!githubUsername || !access_token || !access_secret) {
+    if (!access_token || !access_secret) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    await saveXCredentials({ githubUsername, access_token, access_secret });
+    await saveXCredentials({ access_token, access_secret });
 
     return NextResponse.json({ success: true });
   } catch (error) {

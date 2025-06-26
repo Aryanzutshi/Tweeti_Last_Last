@@ -27,7 +27,6 @@ export default function Header() {
   const [statusType, setStatusType] = useState<"success" | "error" | null>(null);
   const [showXModal, setShowXModal] = useState(false);
   const [xCredentials, setXCredentials] = useState({
-    githubUsername: "",
     access_token: "",
     access_secret: "",
   });
@@ -45,7 +44,7 @@ export default function Header() {
     setShowXModal(true);
   };
 
-  const getXCredentials = async (githubUsername: string) => {
+  const getXCredentials = async () => {
     try {
       const popup = window.open(
         `http://xauth.onrender.com/auth/twitter`,
@@ -80,7 +79,6 @@ export default function Header() {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                githubUsername,
                 ...tokenData,
               }),
             });
@@ -191,25 +189,6 @@ export default function Header() {
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
-              {[
-                { label: "GitHub Username", key: "githubUsername" },
-              ].map(({ label, key }) => (
-                <div key={key}>
-                  <label className="block text-sm font-medium text-muted-foreground mb-1">
-                    {label}
-                  </label>
-                  <Input
-                    placeholder={`Enter ${label}`}
-                    value={xCredentials[key as keyof typeof xCredentials]}
-                    onChange={(e) =>
-                      setXCredentials({
-                        ...xCredentials,
-                        [key]: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-              ))}
               <div className="pt-2 text-sm text-muted-foreground">
                 Need help?{" "}
                 <a
@@ -228,8 +207,7 @@ export default function Header() {
               </Button>
               <Button
                 className="w-full text-white-900 bg-blue-600 hover:bg-blue-700"
-                disabled={!xCredentials.githubUsername}
-                onClick={() => getXCredentials(xCredentials.githubUsername)}
+                onClick={() => getXCredentials()}
               >
                 Connect to X
               </Button>
