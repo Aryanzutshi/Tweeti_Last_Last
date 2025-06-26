@@ -24,20 +24,15 @@ export default function Header() {
   const { data: session } = useSession();
   const [addBorder, setAddBorder] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-  const [statusType, setStatusType] = useState<"success" | "error" | null>(
-    null
-  );
+  const [statusType, setStatusType] = useState<"success" | "error" | null>(null);
   const [showXModal, setShowXModal] = useState(false);
   const [xCredentials, setXCredentials] = useState({
     access_token: "",
     access_secret: "",
   });
 
-  // Derived states
   const isGithubConnected = Boolean(session?.user);
-  const isXConnected = Boolean(
-    xCredentials.access_token && xCredentials.access_secret
-  );
+  const isXConnected = Boolean(xCredentials.access_token && xCredentials.access_secret);
 
   // Debug logs
   useEffect(() => {
@@ -46,7 +41,6 @@ export default function Header() {
     console.log("🔍 X credentials:", xCredentials);
   }, [session, xCredentials]);
 
-  // Detect modal param after GitHub redirect
   useEffect(() => {
     const url = new URL(window.location.href);
     const modalParam = url.searchParams.get("modal");
@@ -58,7 +52,6 @@ export default function Header() {
     }
   }, []);
 
-  // Close modal when both are connected
   useEffect(() => {
     if (isGithubConnected && isXConnected) {
       setShowXModal(false);
@@ -67,27 +60,23 @@ export default function Header() {
     }
   }, [isGithubConnected, isXConnected]);
 
-  // GitHub sign-in with modal redirect
   const handleSignIn = async () => {
     await signIn("github", {
       callbackUrl: `${window.location.origin}?modal=x`,
     });
   };
 
-  // Add header border on scroll
   useEffect(() => {
     const handleScroll = () => setAddBorder(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Open modal
   const handleConnectX = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setShowXModal(true);
   };
 
-  // Get X credentials via popup
   const getXCredentials = async () => {
     try {
       const popup = window.open(
@@ -104,15 +93,21 @@ export default function Header() {
 
       const messageListener = async (event: MessageEvent) => {
         if (event.data?.access_token && event.data?.access_secret) {
+          const github_username =
+            session?.user?.name || session?.user?.email || "";
+
           const tokenData = {
+            github_username,
             access_token: event.data.access_token,
             access_secret: event.data.access_secret,
           };
 
-          setXCredentials((prev) => ({
-            ...prev,
-            ...tokenData,
-          }));
+          console.log("🐛 Sending X credentials:", tokenData);
+
+          setXCredentials({
+            access_token: tokenData.access_token,
+            access_secret: tokenData.access_secret,
+          });
 
           try {
             const res = await fetch("/api/save-x-credentials", {
@@ -221,7 +216,6 @@ export default function Header() {
       {showXModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
           <Card className="relative w-full max-w-lg">
-            {/* Close Button */}
             <button
               onClick={() => setShowXModal(false)}
               className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl font-semibold"
@@ -233,13 +227,11 @@ export default function Header() {
             <CardHeader>
               <CardTitle className="text-2xl">🔗 Connect X API</CardTitle>
               <p className="text-sm text-muted-foreground mt-1">
-                Securely link your X and Github developer credentials to generate automated
-                tweets powered by Tweeti.
+                Securely link your X and GitHub developer credentials to generate automated tweets powered by Tweeti.
               </p>
             </CardHeader>
 
             <CardContent className="space-y-4">
-              {/* Step indicator */}
               <div className="flex items-center justify-between text-sm font-medium text-muted-foreground">
                 <span>
                   {isGithubConnected && isXConnected
@@ -259,11 +251,7 @@ export default function Header() {
 
               <Progress
                 value={
-                  isGithubConnected && isXConnected
-                    ? 100
-                    : isGithubConnected
-                    ? 50
-                    : 0
+                  isGithubConnected && isXConnected ? 100 : isGithubConnected ? 50 : 0
                 }
                 className="h-2"
               />
@@ -282,7 +270,6 @@ export default function Header() {
             </CardContent>
 
             <CardFooter className="flex justify-between gap-3">
-              {/* GitHub Connect Button */}
               {isGithubConnected ? (
                 <div className="w-full flex items-center justify-center gap-2 border border-muted rounded-md px-4 py-2 text-sm text-green-700 font-medium">
                   <Check className="h-4 w-4 text-green-600" />
@@ -298,7 +285,6 @@ export default function Header() {
                 </Button>
               )}
 
-              {/* X Connect Button */}
               <Button
                 className="w-full text-white-900 bg-blue-600 hover:bg-blue-700"
                 onClick={getXCredentials}

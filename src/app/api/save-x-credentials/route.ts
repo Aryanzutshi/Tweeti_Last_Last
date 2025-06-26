@@ -1,23 +1,28 @@
-// app/api/save-x-credentials/route.ts
+// /app/api/save-x-credentials/route.ts
+import { NextResponse } from "next/server";
+import { saveXCredentials } from "@/app/actions/saveXCredentials";
 
-import { NextRequest, NextResponse } from 'next/server';
-import { saveXCredentials } from '@/app/actions/saveXCredentials';
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { github_username, access_token, access_secret } = body;
+    const { github_username, access_token, access_secret } = await req.json();
 
-    // Validate input
+    console.log("📥 Incoming request:", { github_username, access_token, access_secret });
+
     if (!github_username || !access_token || !access_secret) {
-      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
     await saveXCredentials({ github_username, access_token, access_secret });
 
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error('❌ API error saving credentials:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (err) {
+    console.error("🔥 API Error:", err);
+    return NextResponse.json(
+      { error: "Failed to save credentials" },
+      { status: 500 }
+    );
   }
 }
