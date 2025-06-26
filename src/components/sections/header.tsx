@@ -233,7 +233,7 @@ export default function Header() {
             <CardHeader>
               <CardTitle className="text-2xl">🔗 Connect X API</CardTitle>
               <p className="text-sm text-muted-foreground mt-1">
-                Securely link your X developer credentials to generate automated
+                Securely link your X and Github developer credentials to generate automated
                 tweets powered by Tweeti.
               </p>
             </CardHeader>
