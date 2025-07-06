@@ -80,7 +80,7 @@ export default function Header() {
   const getXCredentials = async () => {
     try {
       const popup = window.open(
-        `http://xauth.onrender.com/auth/twitter`,
+        `https://xauth-s7vs.onrender.com/auth/twitter`,
         "_blank",
         "width=500,height=600"
       );
