@@ -52,7 +52,7 @@ export default function Home() {
       <Features />
       <TestimonialsCarousel />
       {/* <Testimonials /> */}
-      <Pricing />
+      {/* <Pricing /> */}
       <FAQ />
       <Blog />
       <CTA />

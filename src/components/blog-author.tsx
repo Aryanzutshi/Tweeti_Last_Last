@@ -19,7 +19,7 @@ export default function Author({
 }) {
   if (imageOnly) {
     return (
-      <img
+      <Image
         src={image}
         alt={name}
         width={36}

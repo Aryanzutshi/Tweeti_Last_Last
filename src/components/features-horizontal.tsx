@@ -147,7 +147,7 @@ export default function Features({
     }, collapseDelay);
 
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [currentIndex, collapseDelay, data.length]);
 
   useEffect(() => {
     const handleAutoScroll = () => {
@@ -159,7 +159,7 @@ export default function Features({
     const autoScrollTimer = setInterval(handleAutoScroll, collapseDelay);
 
     return () => clearInterval(autoScrollTimer);
-  }, [currentIndex]);
+  }, [currentIndex, collapseDelay, data.length, scrollToIndex]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
