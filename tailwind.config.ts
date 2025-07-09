@@ -97,6 +97,21 @@ const config = {
           },
         },
       },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        heading: ['Coolvetica-Heading', 'sans-serif'],
+        subtitle: ['Coolvetica-Subtitle', 'sans-serif'],
+        body: ['Roboto', 'sans-serif']
+      },
+      letterSpacing: {
+        heading: '0', // kerning for headings
+        body: '0',    // kerning for body text
+        subtitle: '10px', // kerning for subtitles
+      },
+      lineHeight: {
+        'subtitle': '1.6', // for subtitle spacing
+        'body': '1.5',    // for body text
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

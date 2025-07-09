@@ -1,125 +1,58 @@
 "use client";
 
-import FlickeringGrid from "@/components/magicui/flickering-grid";
-import Ripple from "@/components/magicui/ripple";
-import Safari from "@/components/safari";
+import BlurFade from "@/components/magicui/blur-fade";
 import Section from "@/components/section";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, GitPullRequest, Link2 } from "lucide-react";
 
-const features = [
+const solutions = [
   {
-    title: "Decentralized Storage with Arweave",
+    title: "Tweet Generation",
     description:
-      "Store data permanently and securely using Arweave's decentralized protocol—eliminating reliance on centralized servers and reducing long-term data loss risks.",
-    className: "hover:bg-purple-500/10 transition-all duration-500 ease-out",
-    content: (
-      <>
-        <Safari
-          src={`/dashboard.png`}
-          url="https://acme.ai"
-          className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
-        />
-      </>
-    ),
+      "Tweeti convert your code commits, pull requests, and project updates into engaging, professional tweets that showcase your work.",
+    icon: Sparkles,
   },
   {
-    title: "Built-In Data Privacy",
+    title: "Auto-Document Everything",
     description:
-      "Sensitive data stays protected with encryption-first architecture, giving users full control over what is stored and who can access it—by design, not by permission.",
-    className:
-      "order-3 xl:order-none hover:bg-blue-500/10 transition-all duration-500 ease-out",
-    content: (
-      <Safari
-        src={`/dashboard.png`}
-        url="https://acme.ai"
-        className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
-      />
-    ),
+      "Your README stays up to date — so your project is always clear, well-documented, and effortless for anyone to understand or onboard.",
+    icon: GitPullRequest,
   },
   {
-    title: "Tamper-Proof & Permanent",
+    title: "Build in Public, Grow Faster",
     description:
-      "Arweave ensures your data is immutable and verifiable forever—ideal for compliance, transparency, and long-term digital integrity.",
-    className:
-      "md:row-span-2 hover:bg-orange-500/10 transition-all duration-500 ease-out",
-    content: (
-      <>
-        <FlickeringGrid
-          className="z-0 absolute inset-0 [mask:radial-gradient(circle_at_center,#fff_400px,transparent_0)]"
-          squareSize={4}
-          gridGap={6}
-          color="#000"
-          maxOpacity={0.1}
-          flickerChance={0.1}
-          height={800}
-          width={800}
-        />
-        <Safari
-          src={`/dashboard.png`}
-          url="https://acme.ai"
-          className="-mb-48 ml-12 mt-16 h-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-x-[-10px] transition-all duration-300"
-        />
-      </>
-    ),
-  },
-  {
-    title: "Customizable Solutions",
-    description:
-      "Tailor our AI services to your specific needs with flexible customization options, allowing you to get the most out of our platform.",
-    className:
-      "flex-row order-4 md:col-span-2 md:flex-row xl:order-none hover:bg-green-500/10 transition-all duration-500 ease-out",
-    content: (
-      <>
-        <Ripple className="absolute -bottom-full" />
-        <Safari
-          src={`/dashboard.png`}
-          url="https://acme.ai"
-          className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
-        />
-      </>
-    ),
+      "Build your developer brand and grow your network by maintaining an active presence across GitHub and X (Twitter) simultaneously.",
+    icon: Link2,
   },
 ];
 
 export default function Component() {
-  return (
-    <Section
-      title="Solution"
-      subtitle="Empower Your Business with Tweeti"
-      description="Generic AI tools won't suffice. Our platform is purpose-built to provide exceptional AI-driven solutions for your unique business needs."
-      className="bg-neutral-100 dark:bg-neutral-900"
-    >
-      <div className="mx-auto mt-16 grid max-w-sm grid-cols-1 gap-6 text-gray-500 md:max-w-3xl md:grid-cols-2 xl:grid-rows-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            className={cn(
-              "group relative items-start overflow-hidden bg-neutral-50 dark:bg-neutral-800 p-6 rounded-2xl",
-              feature.className
-            )}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              type: "spring",
-              stiffness: 100,
-              damping: 30,
-              delay: index * 0.1,
-            }}
-            viewport={{ once: true }}
-          >
-            <div>
-              <h3 className="font-semibold mb-2 text-primary">
-                {feature.title}
-              </h3>
-              <p className="text-foreground">{feature.description}</p>
-            </div>
-            {feature.content}
-            <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-neutral-50 dark:from-neutral-900 pointer-events-none"></div>
-          </motion.div>
-        ))}
-      </div>
-    </Section>
-  );
+	return (
+		<Section
+			title="Solution"
+			subtitle="Empower Your Business with Tweeti"
+			description="Generic AI tools won't suffice. Our platform is purpose-built to provide exceptional AI-driven solutions for your unique business needs."
+			className="bg-neutral-100 dark:bg-neutral-900"
+		>
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+				{solutions.map((solution, index) => (
+					<BlurFade key={index} delay={0.2 + index * 0.2} inView>
+						<Card className="bg-background border-none shadow-none">
+							<CardContent className="p-6 space-y-4">
+								<div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+									<solution.icon className="w-6 h-6 text-primary" />
+								</div>
+								<h3 className="text-xl font-heading tracking-heading font-semibold">
+									{solution.title}
+								</h3>
+								<p className="text-muted-foreground font-body tracking-body">
+									{solution.description}
+								</p>
+							</CardContent>
+						</Card>
+					</BlurFade>
+				))}
+			</div>
+		</Section>
+	);
 }

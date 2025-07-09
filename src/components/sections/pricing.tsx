@@ -82,28 +82,28 @@ export default function PricingSection() {
                 </span>
               </div>
             )}
-            <div>
-              <p className="text-base font-semibold text-muted-foreground">
+            <div className="flex flex-col items-center justify-center gap-4">
+              <h3 className="font-heading tracking-heading text-3xl font-medium">
                 {plan.name}
-              </p>
-              <p className="mt-6 flex items-center justify-center gap-x-2">
-                <span className="text-5xl font-bold tracking-tight text-foreground">
+              </h3>
+              <p className="flex items-center text-muted-foreground font-body tracking-body">
+                <span className="text-5xl font-heading tracking-heading text-foreground">
                   {isMonthly ? plan.price : plan.yearlyPrice}
                 </span>
                 {plan.period !== "Next 3 months" && (
-                  <span className="text-sm font-semibold leading-6 tracking-wide text-muted-foreground">
+                  <span className="text-sm font-body tracking-body leading-6 text-muted-foreground">
                     / {plan.period}
                   </span>
                 )}
               </p>
 
-              <p className="text-xs leading-5 text-muted-foreground">
+              <p className="text-xs leading-5 font-body tracking-body text-muted-foreground">
                 {isMonthly ? "billed monthly" : "billed annually"}
               </p>
 
               <ul className="mt-5 gap-2 flex flex-col">
                 {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
+                  <li key={idx} className="flex items-center font-body tracking-body">
                     <Check className="mr-2 h-4 w-4 text-primary" />
                     <span>{feature}</span>
                   </li>
@@ -115,19 +115,15 @@ export default function PricingSection() {
               <Link
                 href={plan.href}
                 className={cn(
-                  buttonVariants({
-                    variant: "outline",
-                  }),
-                  "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
+                  buttonVariants({ variant: "outline" }),
+                  "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-heading",
                   "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-1 hover:bg-primary hover:text-white",
-                  plan.isPopular
-                    ? "bg-primary text-white"
-                    : "bg-white text-black"
+                  plan.isPopular ? "bg-primary text-white" : "bg-white text-black"
                 )}
               >
                 {plan.buttonText}
               </Link>
-              <p className="mt-6 text-xs leading-5 text-muted-foreground">
+              <p className="mt-6 text-xs font-body tracking-body leading-5 text-muted-foreground">
                 {plan.description}
               </p>
             </div>

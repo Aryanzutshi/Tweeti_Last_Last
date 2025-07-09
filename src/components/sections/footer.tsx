@@ -14,13 +14,11 @@ export default function Footer() {
           className="relative mr-6 flex items-center space-x-2"
         >
           <Image
-            src="/Tweeti_Logo.jpg"
+            src="/Tweeti_Logo.png"
             alt="Tweeti Logo"
-            width={40}
-            height={40}
-            className="rounded-lg"
+            width={80}
+            height={80}
           />
-          <span className="font-bold text-xl">{siteConfig.name}</span>
         </a>
 
         <div className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 mt-8">

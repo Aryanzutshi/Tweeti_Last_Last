@@ -26,11 +26,11 @@ export const siteConfig = {
         //   icon: <Icons.logo className="h-6 w-6" />,
         //   title: "AI-Powered Automation",
         //   description: "Streamline your workflow with intelligent automation.",
-        //   href: "https://github.com/apps/tweetii",
+        //   href: "https://github.com/apps/tweetiii",
         // },
         items: [
           {
-            href: "https://github.com/apps/tweetii",
+            href: "https://github.com/apps/tweetiii",
             title: "GitHub Commit to Tweet",
             description: "Automatically tweet updates about your product",
           },

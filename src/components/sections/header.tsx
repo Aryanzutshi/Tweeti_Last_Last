@@ -155,16 +155,14 @@ export default function Header() {
             <Link
               href="/"
               title="brand-logo"
-              className="relative mr-6 flex items-center space-x-2"
+              className="relative mr-6 flex items-center"
             >
               <Image
-                src="/Tweeti_Logo.jpg"
+                src="/Tweeti_Logo.png"
                 alt="Tweeti Logo"
-                width={40}
-                height={40}
-                className="rounded-lg"
+                width={100}
+                height={100}
               />
-              <span className="font-bold text-xl">{siteConfig.name}</span>
             </Link>
           </div>
 
@@ -185,7 +183,7 @@ export default function Header() {
                     onClick={handleConnectX}
                     className={buttonVariants({ variant: "outline" })}
                   >
-                    Connect X API
+                    Connect GitHub & X
                   </Link>
                 )}
               </div>
@@ -225,14 +223,14 @@ export default function Header() {
             </button>
 
             <CardHeader>
-              <CardTitle className="text-2xl">🔗 Connect X API</CardTitle>
-              <p className="text-sm text-muted-foreground mt-1">
+              <CardTitle className="text-2xl font-heading tracking-heading">🔗 Connect GitHub & X</CardTitle>
+              <p className="text-sm font-body tracking-body text-muted-foreground mt-1">
                 Securely link your X and GitHub developer credentials to generate automated tweets powered by Tweeti.
               </p>
             </CardHeader>
 
             <CardContent className="space-y-4">
-              <div className="flex items-center justify-between text-sm font-medium text-muted-foreground">
+              <div className="flex items-center justify-between text-sm font-body tracking-body text-muted-foreground">
                 <span>
                   {isGithubConnected && isXConnected
                     ? "Step 2 of 2"
@@ -256,13 +254,13 @@ export default function Header() {
                 className="h-2"
               />
 
-              <div className="pt-2 text-sm text-muted-foreground">
+              <div className="pt-2 text-sm font-body tracking-body text-muted-foreground">
                 Need help?{" "}
                 <a
                   href="https://tweeti.vercel.app/blog/how-we-manage-data"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline font-medium"
+                  className="text-blue-600 hover:underline font-body tracking-body"
                 >
                   Learn how we manage your data →
                 </a>

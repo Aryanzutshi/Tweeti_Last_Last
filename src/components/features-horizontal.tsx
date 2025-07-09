@@ -265,6 +265,7 @@ export default function Features({
                 ))}
               </Accordion.Root>
             </div>
+            {/* Image section commented out
             <div
               className={`w-auto overflow-hidden relative rounded-lg ${
                 ltr && "md:order-1"
@@ -302,7 +303,7 @@ export default function Features({
                 colorTo="hsl(var(--primary)/0)"
               />
             </div>
-
+            */}
             <ul
               ref={carouselRef}
               className="flex h-full snap-x flex-nowrap overflow-x-auto py-10 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(90deg,transparent,black_20%,white_80%,transparent)] [mask-image:linear-gradient(90deg,transparent,black_20%,white_80%,transparent)] [scrollbar-width:none] md:hidden [&::-webkit-scrollbar]:hidden snap-mandatory"

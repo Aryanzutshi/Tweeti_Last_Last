@@ -51,7 +51,7 @@ export function HeroCTA() {
   return (
     <div className="flex w-full max-w-4xl flex-col space-y-4 overflow-hidden pt-8">
       <motion.h1
-        className="text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl"
+        className="text-center text-4xl font-heading tracking-heading leading-tight text-foreground sm:text-5xl md:text-6xl"
         initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
         animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
         transition={{
@@ -60,10 +60,10 @@ export function HeroCTA() {
           staggerChildren: 0.2,
         }}
       >
-        {["Automate", "your", "workflow", "with Tweeti"].map((text, index) => (
+        {["Automate", "your", "workflow", "with tweeti"].map((text, index) => (
           <motion.span
             key={index}
-            className="inline-block px-1 md:px-2 text-balance font-semibold"
+            className="inline-block px-1 md:px-2 text-balance font-heading tracking-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -78,7 +78,7 @@ export function HeroCTA() {
       </motion.h1>
 
       <motion.p
-        className="mx-auto max-w-xl text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9 text-balance"
+        className="mx-auto max-w-xl text-center text-lg font-body tracking-body leading-7 text-muted-foreground sm:text-xl sm:leading-9 text-balance"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -94,32 +94,27 @@ export function HeroCTA() {
         className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto pt-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.8,
-          duration: 0.8,
-          ease,
-        }}
+        transition={{ delay: 0.8, duration: 0.8, ease }}
       >
-        {/* First Feature - Requires X Credentials */}
+        {/* First Feature - Integration */}
         <motion.div
           className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-purple-50/50 to-purple-100/30 dark:from-purple-950/50 dark:to-purple-900/30 p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
           whileHover={{ y: -5 }}
         >
           <div className="flex items-start justify-between mb-4">
-            <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M8.78141 5.33312L5.20541 1.75712L6.14808 0.814453L11.3334 5.99979L6.14808 11.1851L5.20541 10.2425L8.78141 6.66645H0.666748V5.33312H8.78141Z" fill="currentColor" />
               </svg>
             </div>
             <div className="text-xs bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-full font-medium">
               Requires X Credentials
             </div>
           </div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">GitHub Commit to Tweet</h3>
-          <p className="text-muted-foreground mb-4">Automatically tweet updates about your product</p>
+          <h3 className="text-xl font-heading tracking-heading text-foreground mb-2">GitHub Commit to Tweet</h3>
+          <p className="text-muted-foreground font-body tracking-body mb-4">Automatically tweet updates about your product</p>
           <Link
-            href="https://github.com/apps/tweetii"
+            href="https://github.com/apps/tweetiii"
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
@@ -137,8 +132,8 @@ export function HeroCTA() {
           whileHover={{ y: -5 }}
         >
           <div className="flex items-start justify-between mb-4">
-            <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
               </svg>
             </div>
@@ -146,8 +141,8 @@ export function HeroCTA() {
               Configure with github
             </div>
           </div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">GitHub Docify</h3>
-          <p className="text-muted-foreground mb-4">Keep your README updated</p>
+          <h3 className="text-xl font-heading tracking-heading text-foreground mb-2">GitHub Docify</h3>
+          <p className="text-muted-foreground font-body tracking-body mb-4">Keep your README updated</p>
           <Link
             href="https://github.com/apps/readmepusher"
             target="_blank"
