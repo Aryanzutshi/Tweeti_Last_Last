@@ -5,25 +5,25 @@ import { Sparkles, Upload, Zap } from "lucide-react";
 const data = [
   {
     id: 1,
-    title: "1. Securely Connect in Seconds",
+    title: "1. Securely Connect with GitHub",
     content:
-      "Your journey starts with peace of mind — Tweeti uses a fully serverless, secure-by-design architecture to protect your credentials. No data ever touches a centralized server.",
+      "Log in with GitHub and authorize Tweeti. We only save your GitHub username. No private data, no clutter.",
     image: "/Tweeti_Feature-1.png",
     icon: <Upload className="w-6 h-6 text-primary" />,
   },
   {
     id: 2,
-    title: "2. Link Your GitHub — Instantly",
+    title: "2. Securely Connect with X (Twitter)",
     content:
-      "Just one click to connect your GitHub. Choose your favorite repos or let Tweeti auto-discover your most active projects. You’re always in control.",
+      "Connect with your X (Twitter) account so Tweeti can share your progress on X.",
     image: "/Tweeti_Feature-2.png",
     icon: <Zap className="w-6 h-6 text-primary" />,
   },
   {
     id: 3,
-    title: "3. Watch the Magic Happen",
+    title: "3. Install the tweeti GitHub App",
     content:
-      "Tweeti auto-generates tweet-worthy content from your commits and PRs — personalized, polished, and ready to go. You build. We broadcast.",
+      "Install app on the repos you want — install for all or pick specific ones. That’s it! A one-time setup, and you’re ready to let your work market itself.",
     image: "/X_Photo-Features.png",
     icon: <Sparkles className="w-6 h-6 text-primary" />,
   },
@@ -31,7 +31,7 @@ const data = [
 
 export default function Component() {
   return (
-    <Section title="How it works" subtitle="Just 3 steps to get started">
+    <Section title="How it works" subtitle="Get started with Tweeti in 3 easy steps">
       <Features data={data} />
     </Section>
   );
